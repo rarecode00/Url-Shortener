@@ -1,5 +1,3 @@
-import "./App.css";
-
 function App() {
   return <div className="text-red">This is the App.js</div>;
 }

@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+// eslint-disable-next-line no-undef
 module.exports = {
   darkMode: ["class"],
   content: [
@@ -16,6 +17,7 @@ module.exports = {
         "2xl": "1400px",
       },
     },
+    colors: {},
     extend: {
       colors: {
         border: "hsl(var(--border))",
@@ -73,5 +75,6 @@ module.exports = {
       },
     },
   },
+  // eslint-disable-next-line no-undef
   plugins: [require("tailwindcss-animate")],
 };
