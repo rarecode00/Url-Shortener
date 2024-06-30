@@ -37,7 +37,7 @@ const Header = () => {
                 <LinkIcon className="mr-2 h-4 w-4" />
                 <span> My Links</span>
               </DropdownMenuItem>
-              <DropdownMenuItem className="text-red">
+              <DropdownMenuItem className="text-[red]">
                 <LogOutIcon className="mr-2 h-4 w-4" />
                 <span>Logout</span>
               </DropdownMenuItem>
