@@ -20,6 +20,9 @@ module.exports = {
     colors: {},
     extend: {
       colors: {
+        gray: {
+          800: "#2d3748", // Tailwind's default gray-800 color value
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

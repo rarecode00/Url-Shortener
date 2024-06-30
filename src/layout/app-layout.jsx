@@ -1,9 +1,14 @@
+import Header from "@/components/header";
 import { Outlet } from "react-router-dom";
 
 const AppLayout = () => {
   return (
     <div>
-      <Outlet />
+      <main className="min-h-screen container">
+        <Header />
+        <Outlet />
+      </main>
+      <div className="p-10 text-center bg-gray-800">Made by Krishna Sharma</div>
     </div>
   );
 };
