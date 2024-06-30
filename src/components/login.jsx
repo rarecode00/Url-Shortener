@@ -11,8 +11,10 @@ import {
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import Error from "./error";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as Yup from "yup";
+import useFetch from "@/hooks/use-fetch";
+import { login } from "@/db/apiAuth";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -20,7 +22,7 @@ const Login = () => {
     password: "",
   });
   const [errors, setErrors] = useState([]);
-
+  const { data, error, loading, fn: fnLogin } = useFetch(login, formData);
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -41,6 +43,7 @@ const Login = () => {
           .required("Password is Required"),
       });
       await schema.validate(formData, { abortEarly: false });
+      await fnLogin();
     } catch (e) {
       const newErrors = {};
       e.inner.forEach((err) => {
@@ -50,6 +53,11 @@ const Login = () => {
     }
   };
 
+  useEffect(() => {
+    console.log(data);
+    console.log(error);
+  }, [data, error]);
+
   return (
     <div>
       <Card>
@@ -58,7 +66,7 @@ const Login = () => {
           <CardDescription>
             to your account if you already have one
           </CardDescription>
-          <Error message={"Some Err msg"} />
+          {error && <Error message={error.message} />}
         </CardHeader>
         <CardContent className="space-y-2">
           <div className="space-y-1">
@@ -88,7 +96,7 @@ const Login = () => {
         </CardContent>
         <CardFooter>
           <Button onClick={() => handleLogin()}>
-            {true ? <BeatLoader size={10} /> : "Login"}
+            {loading ? <BeatLoader size={10} /> : "Login"}
           </Button>
         </CardFooter>
       </Card>
