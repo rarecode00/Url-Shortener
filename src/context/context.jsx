@@ -5,6 +5,7 @@ import { createContext, useContext, useEffect } from "react";
 
 const UrlContext = createContext();
 
+// eslint-disable-next-line react/prop-types
 const UserContext = ({ children }) => {
   const { data: user, loading, fn: fetchUser } = useFetch(getCurrentUser);
   const isAuthenticate = user?.role == "authenticated";
