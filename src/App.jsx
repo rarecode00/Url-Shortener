@@ -5,6 +5,7 @@ import AuthPage from "./pages/auth";
 import LinkPage from "./pages/link";
 import RedirectPage from "./pages/redirect";
 import LandingPage from "./pages/landing-page";
+import UserContext from "./context/context";
 
 const router = createBrowserRouter([
   {
@@ -35,7 +36,11 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <UserContext>
+      <RouterProvider router={router} />
+    </UserContext>
+  );
 }
 
 export default App;
